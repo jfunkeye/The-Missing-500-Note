@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Missing ₦500 Note | Nigerian Story About Honesty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-bg: #F5F0E8;
+      --color-surface: #FFFFFF;
+      --color-primary: #C4451B;
+      --color-primary-dark: #9A3412;
+      --color-secondary: #2C5F2D;
+      --color-accent: #D4A373;
+      --color-text: #2D2B28;
+      --color-text-light: #6B6A67;
+      --color-border: #E6E0D6;
+      --shadow-card: 0 20px 35px -12px rgba(0,0,0,0.1);
+      --shadow-hover: 0 30px 45px -15px rgba(0,0,0,0.15);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      inset: 0;
+      background: var(--color-primary);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease, visibility 0.5s;
+    }
+
+    .loading-content {
+      text-align: center;
+    }
+
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 3px solid rgba(255,255,255,0.2);
+      border-top: 3px solid white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      color: white;
+      font-weight: 500;
+      letter-spacing: 2px;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(245, 240, 232, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--color-border);
+      transform: translateY(-100%);
+      transition: transform 0.3s;
+    }
+
+    .nav.visible {
+      transform: translateY(0);
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--color-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-primary);
+    }
+
+    /* Hero Section - Completely New Layout */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 6rem 5% 4rem;
+      gap: 3rem;
+    }
+
+    .hero-left {
+      animation: slideUp 0.6s ease;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--color-primary);
+      color: white;
+      padding: 0.3rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-left h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--color-primary);
+    }
+
+    .hero-left p {
+      font-size: 1.1rem;
+      color: var(--color-text-light);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat {
+      text-align: left;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--color-secondary);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--color-text-light);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: white;
+      border: none;
+      padding: 0.9rem 2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+      padding: 0.9rem 2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .hero-right {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+      border-radius: 2rem;
+      padding: 2rem;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .hero-quote {
+      text-align: center;
+      color: white;
+    }
+
+    .hero-quote i {
+      font-size: 2rem;
+      opacity: 0.5;
+      margin-bottom: 1rem;
+    }
+
+    .hero-quote p {
+      font-size: 1.5rem;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      line-height: 1.4;
+    }
+
+    .hero-quote small {
+      display: block;
+      margin-top: 1rem;
+      opacity: 0.8;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 5rem 5%;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-family: 'Playfair Display', serif;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header p {
+      color: var(--color-text-light);
+    }
+
+    /* Character Grid - New Design */
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .character-item {
+      background: var(--color-surface);
+      padding: 2rem;
+      transition: all 0.3s;
+      border-bottom: 3px solid var(--color-accent);
+    }
+
+    .character-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .character-item.featured {
+      border-bottom-color: var(--color-primary);
+    }
+
+    .character-avatar {
+      width: 100px;
+      height: 100px;
+      background: var(--color-bg);
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .character-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .character-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .character-role {
+      color: var(--color-primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .character-traits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .trait {
+      background: var(--color-bg);
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--color-text-light);
+    }
+
+    /* Timeline - New Horizontal Design */
+    .timeline-container {
+      background: var(--color-surface);
+      padding: 3rem;
+      border-radius: 1rem;
+    }
+
+    .timeline-horizontal {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .timeline-step {
+      flex: 1;
+      min-width: 150px;
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--color-bg);
+      position: relative;
+    }
+
+    .timeline-step .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-weight: 700;
+    }
+
+    .timeline-step h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-step p {
+      font-size: 0.85rem;
+      color: var(--color-text-light);
+    }
+
+    /* Story Scenes - Magazine Style */
+    .story-scene {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--color-surface);
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .story-scene.reverse {
+      direction: rtl;
+    }
+
+    .story-scene.reverse .scene-text {
+      direction: ltr;
+    }
+
+    .scene-image {
+      min-height: 400px;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--color-bg);
+    }
+
+    .scene-text {
+      padding: 3rem;
+      direction: ltr;
+    }
+
+    .scene-chapter {
+      color: var(--color-primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .scene-text h3 {
+      font-size: 1.8rem;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1rem;
+    }
+
+    .dialogue {
+      background: var(--color-bg);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--color-primary);
+      font-style: italic;
+    }
+
+    .dialogue-speaker {
+      font-style: normal;
+      font-weight: 700;
+      margin-top: 0.5rem;
+      color: var(--color-primary);
+    }
+
+    /* Interactive Card */
+    .interactive-card {
+      background: linear-gradient(135deg, var(--color-secondary), #1a3a1a);
+      color: white;
+      padding: 3rem;
+      text-align: center;
+      border-radius: 1rem;
+      margin: 3rem 0;
+    }
+
+    .interactive-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .choice-panel {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .choice-btn {
+      background: rgba(255,255,255,0.1);
+      border: 2px solid white;
+      padding: 1rem 2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      color: white;
+    }
+
+    .choice-btn:hover {
+      background: white;
+      color: var(--color-secondary);
+    }
+
+    .choice-result {
+      background: rgba(255,255,255,0.1);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      display: none;
+    }
+
+    .choice-result.show {
+      display: block;
+    }
+
+    /* Moral Lessons - Card Grid */
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .lesson-card {
+      background: var(--color-surface);
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .lesson-icon {
+      font-size: 2.5rem;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+    }
+
+    .lesson-card h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .lesson-card p {
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+    }
+
+    /* Quiz Section */
+    .quiz-container {
+      background: var(--color-surface);
+      padding: 3rem;
+      text-align: center;
+      border-radius: 1rem;
+    }
+
+    .quiz-question {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 1.5rem 0;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .quiz-opt {
+      background: var(--color-bg);
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    .quiz-opt:hover {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .quiz-opt.correct {
+      background: var(--color-secondary);
+      color: white;
+    }
+
+    .quiz-opt.wrong {
+      background: #c4451b;
+      color: white;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--color-text);
+      color: white;
+      padding: 3rem 5%;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer h4 {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .footer a {
+      color: #aaa;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    .footer a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.8rem;
+    }
+
+    /* Dark Mode Toggle */
+    .dark-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--color-primary);
+      border: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1000;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+
+    body.dark-mode {
+      --color-bg: #1a1a1a;
+      --color-surface: #2d2d2d;
+      --color-text: #e8e8e8;
+      --color-text-light: #aaa;
+      --color-border: #3d3d3d;
+    }
+
+    /* Animations */
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 8rem;
+      }
+      .story-scene {
+        grid-template-columns: 1fr;
+      }
+      .story-scene.reverse {
+        direction: ltr;
+      }
+      .timeline-horizontal {
+        flex-direction: column;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    [data-scroll] {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    [data-scroll].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Loading Story...</div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-logo">₦500 NOTE</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#characters">Characters</a></li>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#lessons">Lessons</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+    </ul>
+  </nav>
+
+  <button class="dark-toggle" id="darkToggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <div class="hero-badge">NEW STORY</div>
+        <h1>The Missing<br>₦500 Note</h1>
+        <p>A 9-year-old girl finds money at the bustling Ogbete Market. What happens next will change her life forever.</p>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Main Characters</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Story Chapters</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Life Lessons</div>
+          </div>
+        </div>
+        <div class="btn-group">
+          <a href="#story" class="btn-primary">Read the Story</a>
+          <a href="#quiz" class="btn-secondary">Take the Quiz</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-quote">
+          <i class="fas fa-quote-left"></i>
+          <p>A clear conscience is better than a full pocket.</p>
+          <small>Nigerian Proverb</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Characters Section -->
+    <section class="section" id="characters">
+      <div class="section-header">
+        <h2>The Characters</h2>
+        <p>The people who bring this story to life</p>
+      </div>
+      <div class="character-grid">
+        <div class="character-item featured" data-scroll>
+          <div class="character-avatar">
+            <img src="images/adanna-portrait.png" alt="Adanna" onerror="this.style.background='var(--color-primary)'">
+          </div>
+          <h3>Adanna</h3>
+          <div class="character-role">The Protagonist</div>
+          <p>A sharp 9-year-old who loves mathematics. She faces the hardest test of her young life when she discovers lost money.</p>
+          <div class="character-traits">
+            <span class="trait">Intelligent</span>
+            <span class="trait">Curious</span>
+            <span class="trait">Kind-hearted</span>
+          </div>
+        </div>
+        <div class="character-item" data-scroll>
+          <div class="character-avatar">
+            <img src="images/mama-nkechi.png" alt="Mama Nkechi" onerror="this.style.background='var(--color-accent)'">
+          </div>
+          <h3>Mama Nkechi</h3>
+          <div class="character-role">The Pepper Seller</div>
+          <p>A hardworking market woman. The lost money was meant for her daughter's school fees.</p>
+          <div class="character-traits">
+            <span class="trait">Hardworking</span>
+            <span class="trait">Faithful</span>
+            <span class="trait">Grateful</span>
+          </div>
+        </div>
+        <div class="character-item" data-scroll>
+          <div class="character-avatar">
+            <img src="images/chidi-brother.png" alt="Chidi" onerror="this.style.background='var(--color-secondary)'">
+          </div>
+          <h3>Chidi</h3>
+          <div class="character-role">The Older Brother</div>
+          <p>Adanna's 13-year-old brother who thinks he knows everything. "Abeg no vex" — but his advice isn't always right.</p>
+          <div class="character-traits">
+            <span class="trait">Persuasive</span>
+            <span class="trait">Mischievous</span>
+            <span class="trait">Learning</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section" style="padding-top: 0;">
+      <div class="section-header">
+        <h2>The Journey</h2>
+        <p>Follow Adanna's path from discovery to redemption</p>
+      </div>
+      <div class="timeline-container">
+        <div class="timeline-horizontal">
+          <div class="timeline-step"><div class="step-number">1</div><h4>Discovery</h4><p>Adanna finds ₦500 at the market</p></div>
+          <div class="timeline-step"><div class="step-number">2</div><h4>Temptation</h4><p>Chidi suggests keeping it</p></div>
+          <div class="timeline-step"><div class="step-number">3</div><h4>Struggle</h4><p>Guilt keeps her awake</p></div>
+          <div class="timeline-step"><div class="step-number">4</div><h4>Return</h4><p>She goes back to the market</p></div>
+          <div class="timeline-step"><div class="step-number">5</div><h4>Reward</h4><p>Honesty brings blessings</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story Scenes -->
+    <section class="section" id="story" style="padding-top: 0;">
+      <div class="section-header">
+        <h2>The Story</h2>
+        <p>A tale of honesty, integrity, and second chances</p>
+      </div>
+
+      <!-- Scene 1 -->
+      <div class="story-scene" data-scroll>
+        <div class="scene-image" style="background-image: url('images/adanna-finds-money.png'); background-size: cover; background-position: center;"></div>
+        <div class="scene-text">
+          <div class="scene-chapter">CHAPTER ONE</div>
+          <h3>The Discovery</h3>
+          <p>The Saturday sun beat down on Ogbete Market. Adanna clutched her mother's shopping list, navigating between stalls of yams, tomatoes, and colorful fabrics. Suddenly, her sandal kicked something on the dusty ground.</p>
+          <div class="dialogue">
+            "Ah! What's this?"
+            <div class="dialogue-speaker">— Adanna, bending down</div>
+          </div>
+          <p>It was a ₦500 note, crumpled but very real. Her heart raced. With this money, she could finally buy the Nigerian-made doll she had been dreaming of for months. The one with the beautiful afro puffs and green Ankara dress.</p>
+          <div class="dialogue">
+            "Nobody's watching. Finders keepers, right?"
+            <div class="dialogue-speaker">— Adanna's inner voice</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 2 -->
+      <div class="story-scene reverse" data-scroll>
+        <div class="scene-image" style="background-image: url('images/dream-doll.png'); background-size: cover; background-position: center;"></div>
+        <div class="scene-text">
+          <div class="scene-chapter">CHAPTER TWO</div>
+          <h3>The Temptation</h3>
+          <p>Later that day, Adanna stared through the shop window at the beautiful doll. ₦500. Exactly the amount in her pocket. Her fingers touched the crisp note. She could almost feel the doll in her arms.</p>
+          <div class="dialogue">
+            "Abeg, just buy it! Who will know? The person who dropped the money probably has plenty. You think they'll miss ₦500?"
+            <div class="dialogue-speaker">— Chidi, her older brother</div>
+          </div>
+          <p>Chidi had a point, didn't he? But something felt wrong. Deep in her stomach, a small voice whispered, "This isn't yours."</p>
+        </div>
+      </div>
+
+      <!-- Interactive Choice -->
+      <div class="interactive-card" data-scroll>
+        <h3>What Would You Do?</h3>
+        <p>Adanna is standing at the shop, money in hand. The doll is right there. What should she do?</p>
+        <div class="choice-panel">
+          <button class="choice-btn" onclick="makeChoice('keep')">Keep the money and buy the doll</button>
+          <button class="choice-btn" onclick="makeChoice('return')">Return the money to the market</button>
+        </div>
+        <div id="choiceResult" class="choice-result"></div>
+      </div>
+
+      <!-- Scene 3 -->
+      <div class="story-scene" data-scroll>
+        <div class="scene-image" style="background-image: url('images/confrontation-moment.png'); background-size: cover; background-position: center;"></div>
+        <div class="scene-text">
+          <div class="scene-chapter">CHAPTER THREE</div>
+          <h3>The Right Choice</h3>
+          <p>Adanna couldn't sleep that night. The doll sat on her shelf, but she felt no joy. Every time she closed her eyes, she saw a woman crying somewhere, searching for lost money. The next morning, she made her decision.</p>
+          <div class="dialogue">
+            "Chidi, abeg no vex — but keeping this money is wrong. I'm going back to the market."
+            <div class="dialogue-speaker">— Adanna</div>
+          </div>
+          <p>Chidi stared at her like she had grown two heads. But something in her eyes made him stay silent. She walked out the door, the ₦500 note clutched tightly in her hand — not to keep it, but to return it.</p>
+        </div>
+      </div>
+
+      <!-- Scene 4 -->
+      <div class="story-scene reverse" data-scroll>
+        <div class="scene-image" style="background-image: url('images/grateful-hug.png'); background-size: cover; background-position: center;"></div>
+        <div class="scene-text">
+          <div class="scene-chapter">CHAPTER FOUR</div>
+          <h3>A Mother's Tears</h3>
+          <p>At the market, Adanna found Mama Nkechi wiping tears from her eyes. The pepper seller had been praying all morning — that money was for her daughter's school fees.</p>
+          <div class="dialogue">
+            "God bless you, my child! You have a heart of gold. I prayed for a miracle, and God sent you!"
+            <div class="dialogue-speaker">— Mama Nkechi, embracing Adanna</div>
+          </div>
+          <p>Other market women gathered, clapping and praising Adanna. Word spread quickly. A young girl had chosen honesty over greed.</p>
+        </div>
+      </div>
+
+      <!-- Scene 5 -->
+      <div class="story-scene" data-scroll>
+        <div class="scene-image" style="background-image: url('images/reward-scene.png'); background-size: cover; background-position: center;"></div>
+        <div class="scene-text">
+          <div class="scene-chapter">CHAPTER FIVE</div>
+          <h3>Blessings Overflow</h3>
+          <p>A week later, Mama Nkechi arrived at Adanna's house with a beautifully wrapped package. Inside was the exact doll Adanna had wanted, plus fresh peppers, yams, and a handwritten thank you card.</p>
+          <div class="dialogue">
+            "Your honesty touched my heart. This doll is my gift to you. Never change, Adanna. People like you make Nigeria proud."
+            <div class="dialogue-speaker">— Mama Nkechi</div>
+          </div>
+          <p>Chidi watched from the doorway, a changed look on his face. "You were right, sister. Abeg, forgive me," he whispered. Adanna smiled, holding her new doll. She had gained so much more than money could ever buy.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lessons Section -->
+    <section class="section" id="lessons">
+      <div class="section-header">
+        <h2>Lessons from the Story</h2>
+        <p>What Adanna's journey teaches us</p>
+      </div>
+      <div class="lessons-grid">
+        <div class="lesson-card" data-scroll><div class="lesson-icon"><i class="fas fa-scale-balanced"></i></div><h4>Honesty Always Wins</h4><p>Shortcuts might seem easy, but integrity builds character that lasts forever.</p></div>
+        <div class="lesson-card" data-scroll><div class="lesson-icon"><i class="fas fa-bed"></i></div><h4>Guilt Steals Peace</h4><p>Adanna couldn't sleep because she knew she had done wrong. A clear conscience brings real rest.</p></div>
+        <div class="lesson-card" data-scroll><div class="lesson-icon"><i class="fas fa-gift"></i></div><h4>Blessings Follow Integrity</h4><p>When we do right, blessings often come from unexpected places.</p></div>
+        <div class="lesson-card" data-scroll><div class="lesson-icon"><i class="fas fa-eye"></i></div><h4>Someone Is Watching</h4><p>Even when nobody sees you, the people who matter will notice your character.</p></div>
+        <div class="lesson-card" data-scroll><div class="lesson-icon"><i class="fas fa-heart"></i></div><h4>Kindness Is Contagious</h4><p>Adanna's honesty changed Chidi too. One good deed can transform an entire family.</p></div>
+      </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="section" id="quiz">
+      <div class="quiz-container">
+        <h2 style="color: var(--color-primary); margin-bottom: 0.5rem;">Test Your Knowledge</h2>
+        <p>What did you learn from Adanna's story?</p>
+        <div class="quiz-question" id="quizQuestion">How much money did Adanna find at the market?</div>
+        <div class="quiz-options" id="quizOptions">
+          <div class="quiz-opt" onclick="checkAnswer(this, true)">₦500</div>
+          <div class="quiz-opt" onclick="checkAnswer(this, false)">₦1000</div>
+          <div class="quiz-opt" onclick="checkAnswer(this, false)">₦200</div>
+          <div class="quiz-opt" onclick="checkAnswer(this, false)">₦50</div>
+        </div>
+        <p id="quizFeedback" style="margin-top: 1rem; font-weight: 500;"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div>
+        <h4>About This Story</h4>
+        <p style="font-size: 0.85rem;">A Nigerian moral tale teaching children the value of honesty, integrity, and the peace that comes from a clear conscience.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#home">Home</a>
+        <a href="#characters">Characters</a>
+        <a href="#story">The Story</a>
+        <a href="#lessons">Moral Lessons</a>
+        <a href="#quiz">Quiz</a>
+      </div>
+      <div>
+        <h4>For Parents & Teachers</h4>
+        <a href="#">Discussion Guide</a>
+        <a href="#">Activity Sheets</a>
+        <a href="#">More Stories</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Missing ₦500 Note | A Nigerian Story About Honesty</p>
+      <p style="margin-top: 0.5rem; font-style: italic;">"A clear conscience is better than a full pocket."</p>
+    </div>
+  </footer>
+
+  <script>
+    // Loading screen - waits for content
+    let loadedCount = 0;
+    const totalImgs = document.querySelectorAll('img').length;
+    
+    function hideLoader() {
+      const loader = document.getElementById('loadingScreen');
+      if (loader) {
+        loader.style.opacity = '0';
+        loader.style.visibility = 'hidden';
+      }
+    }
+    
+    function imgLoaded() {
+      loadedCount++;
+      if (loadedCount >= totalImgs) setTimeout(hideLoader, 200);
+    }
+    
+    document.querySelectorAll('img').forEach(img => {
+      if (img.complete) imgLoaded();
+      else {
+        img.addEventListener('load', imgLoaded);
+        img.addEventListener('error', imgLoaded);
+      }
+    });
+    
+    if (totalImgs === 0) hideLoader();
+    setTimeout(hideLoader, 5000);
+
+    // Navigation
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) nav.classList.add('visible');
+      else nav.classList.remove('visible');
+    });
+
+    // Dark mode
+    const darkToggle = document.getElementById('darkToggle');
+    darkToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const icon = darkToggle.querySelector('i');
+      if (document.body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    });
+
+    // Scroll animations
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          scrollObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('[data-scroll]').forEach(el => scrollObserver.observe(el));
+
+    // Interactive choice
+    window.makeChoice = function(choice) {
+      const result = document.getElementById('choiceResult');
+      if (choice === 'keep') {
+        result.innerHTML = 'Adanna buys the doll... but she cannot sleep at night. Guilt eats at her heart. The doll brings no joy. This is the wrong choice. Honesty leads to true happiness.';
+      } else {
+        result.innerHTML = 'Excellent choice! Adanna returns the money and discovers that doing the right thing brings blessings she never imagined. The doll eventually comes to her anyway — along with a mother\'s gratitude and a clear conscience.';
+      }
+      result.classList.add('show');
+      setTimeout(() => result.classList.remove('show'), 5000);
+    };
+
+    // Quiz
+    window.checkAnswer = function(element, isCorrect) {
+      const options = document.querySelectorAll('.quiz-opt');
+      options.forEach(opt => {
+        opt.classList.remove('correct', 'wrong');
+        opt.style.pointerEvents = 'none';
+      });
+      if (isCorrect) {
+        element.classList.add('correct');
+        document.getElementById('quizFeedback').innerHTML = 'Correct! Adanna found ₦500 at the market.';
+      } else {
+        element.classList.add('wrong');
+        document.getElementById('quizFeedback').innerHTML = 'Not quite! Adanna found ₦500.';
+        options.forEach(opt => {
+          if (opt.textContent.includes('₦500')) opt.classList.add('correct');
+        });
+      }
+      setTimeout(() => {
+        options.forEach(opt => {
+          opt.classList.remove('correct', 'wrong');
+          opt.style.pointerEvents = 'auto';
+        });
+        document.getElementById('quizFeedback').innerHTML = '';
+      }, 3000);
+    };
+  </script>
+</body>
+</html>
