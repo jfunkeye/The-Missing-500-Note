@@ -116,7 +116,7 @@
       color: var(--color-primary);
     }
 
-    /* Hero Section - Completely New Layout */
+    /* Hero Section */
     .hero {
       min-height: 100vh;
       display: grid;
@@ -273,7 +273,7 @@
       color: var(--color-text-light);
     }
 
-    /* Character Grid - New Design */
+    /* Character Grid */
     .character-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -298,8 +298,8 @@
     }
 
     .character-avatar {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       background: var(--color-bg);
       border-radius: 50%;
       margin-bottom: 1.5rem;
@@ -339,7 +339,7 @@
       color: var(--color-text-light);
     }
 
-    /* Timeline - New Horizontal Design */
+    /* Timeline */
     .timeline-container {
       background: var(--color-surface);
       padding: 3rem;
@@ -493,7 +493,7 @@
       display: block;
     }
 
-    /* Moral Lessons - Card Grid */
+    /* Lessons Grid */
     .lessons-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -528,7 +528,7 @@
       color: var(--color-text-light);
     }
 
-    /* Quiz Section */
+    /* Quiz */
     .quiz-container {
       background: var(--color-surface);
       padding: 3rem;
@@ -614,7 +614,7 @@
       font-size: 0.8rem;
     }
 
-    /* Dark Mode Toggle */
+    /* Dark Mode */
     .dark-toggle {
       position: fixed;
       bottom: 20px;
@@ -641,26 +641,15 @@
 
     /* Animations */
     @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
-    /* Mobile */
     @media (max-width: 768px) {
       .hero {
         grid-template-columns: 1fr;
@@ -731,8 +720,8 @@
             <div class="stat-label">Main Characters</div>
           </div>
           <div class="stat">
-            <div class="stat-number">6</div>
-            <div class="stat-label">Story Chapters</div>
+            <div class="stat-number">10</div>
+            <div class="stat-label">Illustrations</div>
           </div>
           <div class="stat">
             <div class="stat-number">5</div>
@@ -753,7 +742,7 @@
       </div>
     </section>
 
-    <!-- Characters Section -->
+    <!-- Characters Section - Image 1, 2, 3 -->
     <section class="section" id="characters">
       <div class="section-header">
         <h2>The Characters</h2>
@@ -762,7 +751,7 @@
       <div class="character-grid">
         <div class="character-item featured" data-scroll>
           <div class="character-avatar">
-            <img src="images/adanna-portrait.png" alt="Adanna" onerror="this.style.background='var(--color-primary)'">
+            <img src="images/adanna-portrait.png" alt="Adanna" onerror="this.src='https://placehold.co/400x400/C4451B/FFFFFF?text=Adanna'">
           </div>
           <h3>Adanna</h3>
           <div class="character-role">The Protagonist</div>
@@ -775,7 +764,7 @@
         </div>
         <div class="character-item" data-scroll>
           <div class="character-avatar">
-            <img src="images/mama-nkechi.png" alt="Mama Nkechi" onerror="this.style.background='var(--color-accent)'">
+            <img src="images/mama-nkechi.png" alt="Mama Nkechi" onerror="this.src='https://placehold.co/400x400/D4A373/FFFFFF?text=Mama+Nkechi'">
           </div>
           <h3>Mama Nkechi</h3>
           <div class="character-role">The Pepper Seller</div>
@@ -788,7 +777,7 @@
         </div>
         <div class="character-item" data-scroll>
           <div class="character-avatar">
-            <img src="images/chidi-brother.png" alt="Chidi" onerror="this.style.background='var(--color-secondary)'">
+            <img src="images/chidi-brother.png" alt="Chidi" onerror="this.src='https://placehold.co/400x400/2C5F2D/FFFFFF?text=Chidi'">
           </div>
           <h3>Chidi</h3>
           <div class="character-role">The Older Brother</div>
@@ -819,25 +808,40 @@
       </div>
     </section>
 
-    <!-- Story Scenes -->
+    <!-- Story Scenes - ALL 10 IMAGES Featured -->
     <section class="section" id="story" style="padding-top: 0;">
       <div class="section-header">
         <h2>The Story</h2>
         <p>A tale of honesty, integrity, and second chances</p>
       </div>
 
-      <!-- Scene 1 -->
+      <!-- Scene 1: IMAGE 1 - adanna-portrait.png -->
       <div class="story-scene" data-scroll>
-        <div class="scene-image" style="background-image: url('images/adanna-finds-money.png'); background-size: cover; background-position: center;"></div>
+        <div class="scene-image" style="background-image: url('images/adanna-portrait.png'); background-size: cover; background-position: center;"></div>
         <div class="scene-text">
           <div class="scene-chapter">CHAPTER ONE</div>
+          <h3>Meet Adanna</h3>
+          <p>Nine-year-old Adanna was known throughout her neighborhood as the girl who could solve any math problem. But on this particular Saturday morning, she would face a different kind of test — one that no textbook could prepare her for.</p>
+          <p>Her mother sent her to Ogbete Market to buy vegetables. Adanna loved these trips. The market was a world of colors, sounds, and smells — fresh peppers, fried plantains, and the chatter of hundreds of traders.</p>
+          <div class="dialogue">
+            "Adanna, don't forget — get the red peppers from Mama Nkechi. She always gives us the best price."
+            <div class="dialogue-speaker">— Adanna's mother</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 2: IMAGE 2 - adanna-finds-money.png -->
+      <div class="story-scene reverse" data-scroll>
+        <div class="scene-image" style="background-image: url('images/adanna-finds-money.png'); background-size: cover; background-position: center;"></div>
+        <div class="scene-text">
+          <div class="scene-chapter">CHAPTER TWO</div>
           <h3>The Discovery</h3>
           <p>The Saturday sun beat down on Ogbete Market. Adanna clutched her mother's shopping list, navigating between stalls of yams, tomatoes, and colorful fabrics. Suddenly, her sandal kicked something on the dusty ground.</p>
           <div class="dialogue">
             "Ah! What's this?"
             <div class="dialogue-speaker">— Adanna, bending down</div>
           </div>
-          <p>It was a ₦500 note, crumpled but very real. Her heart raced. With this money, she could finally buy the Nigerian-made doll she had been dreaming of for months. The one with the beautiful afro puffs and green Ankara dress.</p>
+          <p>It was a ₦500 note, crumpled but very real. Her heart raced. She looked around. Nobody was watching. The money sat in her palm, warm from the morning sun.</p>
           <div class="dialogue">
             "Nobody's watching. Finders keepers, right?"
             <div class="dialogue-speaker">— Adanna's inner voice</div>
@@ -845,22 +849,37 @@
         </div>
       </div>
 
-      <!-- Scene 2 -->
-      <div class="story-scene reverse" data-scroll>
+      <!-- Scene 3: IMAGE 3 - dream-doll.png -->
+      <div class="story-scene" data-scroll>
         <div class="scene-image" style="background-image: url('images/dream-doll.png'); background-size: cover; background-position: center;"></div>
         <div class="scene-text">
-          <div class="scene-chapter">CHAPTER TWO</div>
-          <h3>The Temptation</h3>
+          <div class="scene-chapter">CHAPTER THREE</div>
+          <h3>The Dream Doll</h3>
           <p>Later that day, Adanna stared through the shop window at the beautiful doll. ₦500. Exactly the amount in her pocket. Her fingers touched the crisp note. She could almost feel the doll in her arms.</p>
+          <p>For months, she had watched other girls carry this doll — with its beautiful afro puffs and vibrant green Ankara dress. Now, it could be hers.</p>
           <div class="dialogue">
             "Abeg, just buy it! Who will know? The person who dropped the money probably has plenty. You think they'll miss ₦500?"
             <div class="dialogue-speaker">— Chidi, her older brother</div>
           </div>
-          <p>Chidi had a point, didn't he? But something felt wrong. Deep in her stomach, a small voice whispered, "This isn't yours."</p>
         </div>
       </div>
 
-      <!-- Interactive Choice -->
+      <!-- Scene 4: IMAGE 4 - market-scene-wide.png -->
+      <div class="story-scene reverse" data-scroll>
+        <div class="scene-image" style="background-image: url('images/market-scene-wide.png'); background-size: cover; background-position: center;"></div>
+        <div class="scene-text">
+          <div class="scene-chapter">CHAPTER FOUR</div>
+          <h3>The Bustling Market</h3>
+          <p>The market was a labyrinth of sights and sounds. Women in colorful gele headwraps called out to passersby. Children ran between the stalls. The air smelled of roasting corn and fresh fish.</p>
+          <p>Adanna had been here a hundred times, but today everything looked different. Every face she passed could be the person who lost the money. Every cry she heard could be someone mourning their loss.</p>
+          <div class="dialogue">
+            "Something is wrong. This money doesn't feel like mine."
+            <div class="dialogue-speaker">— Adanna's conscience</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Choice Card -->
       <div class="interactive-card" data-scroll>
         <h3>What Would You Do?</h3>
         <p>Adanna is standing at the shop, money in hand. The doll is right there. What should she do?</p>
@@ -871,11 +890,11 @@
         <div id="choiceResult" class="choice-result"></div>
       </div>
 
-      <!-- Scene 3 -->
+      <!-- Scene 5: IMAGE 5 - confrontation-moment.png -->
       <div class="story-scene" data-scroll>
         <div class="scene-image" style="background-image: url('images/confrontation-moment.png'); background-size: cover; background-position: center;"></div>
         <div class="scene-text">
-          <div class="scene-chapter">CHAPTER THREE</div>
+          <div class="scene-chapter">CHAPTER FIVE</div>
           <h3>The Right Choice</h3>
           <p>Adanna couldn't sleep that night. The doll sat on her shelf, but she felt no joy. Every time she closed her eyes, she saw a woman crying somewhere, searching for lost money. The next morning, she made her decision.</p>
           <div class="dialogue">
@@ -886,11 +905,11 @@
         </div>
       </div>
 
-      <!-- Scene 4 -->
+      <!-- Scene 6: IMAGE 6 - grateful-hug.png -->
       <div class="story-scene reverse" data-scroll>
         <div class="scene-image" style="background-image: url('images/grateful-hug.png'); background-size: cover; background-position: center;"></div>
         <div class="scene-text">
-          <div class="scene-chapter">CHAPTER FOUR</div>
+          <div class="scene-chapter">CHAPTER SIX</div>
           <h3>A Mother's Tears</h3>
           <p>At the market, Adanna found Mama Nkechi wiping tears from her eyes. The pepper seller had been praying all morning — that money was for her daughter's school fees.</p>
           <div class="dialogue">
@@ -901,18 +920,32 @@
         </div>
       </div>
 
-      <!-- Scene 5 -->
+      <!-- Scene 7: IMAGE 7 - reward-scene.png -->
       <div class="story-scene" data-scroll>
         <div class="scene-image" style="background-image: url('images/reward-scene.png'); background-size: cover; background-position: center;"></div>
         <div class="scene-text">
-          <div class="scene-chapter">CHAPTER FIVE</div>
+          <div class="scene-chapter">CHAPTER SEVEN</div>
           <h3>Blessings Overflow</h3>
           <p>A week later, Mama Nkechi arrived at Adanna's house with a beautifully wrapped package. Inside was the exact doll Adanna had wanted, plus fresh peppers, yams, and a handwritten thank you card.</p>
           <div class="dialogue">
             "Your honesty touched my heart. This doll is my gift to you. Never change, Adanna. People like you make Nigeria proud."
             <div class="dialogue-speaker">— Mama Nkechi</div>
           </div>
+        </div>
+      </div>
+
+      <!-- Scene 8: IMAGE 8 - adanna-happy-portrait.png -->
+      <div class="story-scene reverse" data-scroll>
+        <div class="scene-image" style="background-image: url('images/adanna-happy-portrait.png'); background-size: cover; background-position: center;"></div>
+        <div class="scene-text">
+          <div class="scene-chapter">CHAPTER EIGHT</div>
+          <h3>A Changed Girl</h3>
           <p>Chidi watched from the doorway, a changed look on his face. "You were right, sister. Abeg, forgive me," he whispered. Adanna smiled, holding her new doll. She had gained so much more than money could ever buy.</p>
+          <p>That night, she slept peacefully. Her conscience was clear. And in her dreams, she saw herself as Mama Nkechi had described her — a person of integrity, someone who could be trusted.</p>
+          <div class="dialogue">
+            "A clear conscience is better than a full pocket. Now I understand what that means."
+            <div class="dialogue-speaker">— Adanna</div>
+          </div>
         </div>
       </div>
     </section>
